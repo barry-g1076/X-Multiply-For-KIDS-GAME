@@ -1,104 +1,187 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset ="UTF-8"/>
-		<meta name="viewport" content="width= device-width initial-scale=1"/>
-		<meta name="Author" content="Barrington Patterson,Tori Horne,Daniel Francis,Micah Brown"/>
-		<meta name="Keywords" content="HTML,HTMLS,css"/>
-		<title>Registration</title>
-         <link rel="stylesheet" href="style.css">
-		 <script src='index.js'></script>
-		</head>
-		
-		<body> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width= device-width initial-scale=1" />
+    <meta
+      name="Author"
+      content="Barrington Patterson,Tori Horne,Daniel Francis,Micah Brown"
+    />
+    <meta name="Keywords" content="HTML,HTML5,css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+    <title>Xmultiply4Kids</title>
+  </head>
 
-           <header>
-		   <img src="Assets/Xmultiply.png" id="left">
-		    <h1>
-                <span class = "highlight"> X</span>Multiply 4 Kids
-				 </h1>
-				 <nav>
-			   <ul>
-				<li class = "current"><a href ="index.html"> Home </a> </li>
-				 <li><a href ="feedback.html"> FeedBack </a>  </li>
-			   </ul>
-	      </nav>
-            </header>
-			<br>
-			<br>
-				<div class="container">
-					<div class="form-area">
-						<form id="RegForm" name="RegForm" onsubmit="event.preventDefault();">
-                            <h1 class="Reg">Registration</h1><br>
-							<div class="form-group">
-								<label for="FName">First Name</label>
-								<input id="FName" type="text" name="fname" placeholder="Enter First Name" required>
-							</div>
-							<div class="form-group">
-								<label for="LName">Last Name</label>
-								<input id="LName" type="text" name="lname" placeholder="Enter Last Name" required>
-							</div>
-							<div class="form-group">
-								<label for="date">Date Of Birth </label>
-								<input id="date" type="date" name="date" min="2007-12-31" max="2014-01-01" required onchange="ageCalculator()">
-								<span id = "message" style="color:red"> </span> 
-							</div>
-							<div class="form-group">
-								<label>AGE</label><h1 id = "age">....</h1>
-							</div>
-							<div class="form-group">
-								<label for="EMail">Email</label>
-								<input id="EMail" type="email" name="gender" placeholder="example@gmail.com" required pattern=".*@gmail.com" title="Enter email that ends with @gmail.com">
-							</div>
-							<div class="gender-details">
-							  <label>Gender</label>
-							  <br><br>
-								<label class="gender">Male</label>
-							  <input type="radio" name="gender" id="dot-1">
-							  &nbsp;&nbsp;&nbsp;&nbsp;
-								<label class="gender">Female</label>
-							  <input type="radio" name="gender" id="dot-2">
-							 </div> 
-							 <div><label class="show">All Players</label>
-								 <textarea id ="showallplayers" cols="45" rows="10" disabled></textarea> <br>
-							</div>
-							 <div>
-							 <label class="percentage">Percentage</label>
-								 <textarea id ="showpercentage" disabled></textarea> <br>
-							</div>
-								<br/>
-								<div class="progress">
-								 <div class="progress__fill"></div>
-								 <span class="progress__text">0%</span>
-								</div>
-							 <div>
-                             <button  id="register" type="submit" name="register" onclick="Register()">Register</button>
-							<button id="playarea" type="submit" name="Start" onclick="PlayGame(); enablePlayArea()" disabled><a href="#area"> Start</a></button>
-							 <button id = "end" type="submit"  name="End" onclick ="findPercentageScore();formEnable()" disabled> End</button>
-							  <button id = "score" type="submit" name="Score" onclick ="findPercentageScore()" disabled> Score</button>
-								<br/><br/>
-								</div>
-						</form>
-					</div>
-				</div>	
-		        <h1 class="play">
-                Play Area
-				 </h1>
-                <div class= "Numbers">
-                    <div class= "equation" >
-                        <h1 id="num1">...</h1>
-                        <h1>*<input type="hidden" name="operator" id="multiply" onclick="Operator('*')" disabled /></h1>
-						<span id="area"></span>
-                        <h1 id="num2">...</h1>
-                        <h1>=</h1>
-                        &nbsp;<input type="text" name="check" id="user" size="5" maxlength="5" disabled /><br/><br> 
-                        <h2 id ="check" >...</h2>
-                        <button id="accept"  onclick="CheckAnswer()" disabled>Accept</button>
-                        <button id = "next" onclick="clearInput(); PlayGame()" disabled> Next</button>
-                    </div>
-                </div>   
-				<footer>
-				<p>Copyright &copy;<big>X</big>Multiply4kids, November 15, 2021</p>
-				</footer>
-        </body>
-		</html>
+  <body>
+    <header>
+      <!-- <img src="Assets/Xmultiply.png" alt="logo" id="left" /> -->
+      <h1><span class="highlight"> X</span>Multiply 4 Kids</h1>
+      <nav>
+        <ul>
+          <li class="current"><a href="index.html"> Home </a></li>
+          <li><a href="feedback.html"> FeedBack </a></li>
+        </ul>
+      </nav>
+    </header>
+    <br />
+    <br />
+    <div class="container">
+      <div class="form-area">
+        <form id="RegForm" name="RegForm" onsubmit="event.preventDefault();">
+          <h1 class="Reg">Registration</h1>
+          <br />
+          <div class="form-group">
+            <label for="FName">First Name</label>
+            <input
+              id="FName"
+              type="text"
+              name="fname"
+              placeholder="Enter First Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="LName">Last Name</label>
+            <input
+              id="LName"
+              type="text"
+              name="lname"
+              placeholder="Enter Last Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="date">Date Of Birth </label>
+            <input
+              id="date"
+              type="date"
+              name="date"
+              min="2007-12-31"
+              max="2014-01-01"
+              required
+              onchange="ageCalculator()"
+            />
+            <span id="message" style="color: red"> </span>
+          </div>
+          <div class="form-group">
+            <label>AGE</label>
+            <h1 id="age">....</h1>
+          </div>
+          <div class="form-group">
+            <label for="EMail">Email</label>
+            <input
+              id="EMail"
+              type="email"
+              name="gender"
+              placeholder="example@gmail.com"
+              required
+              pattern=".*@gmail.com"
+              title="Enter email that ends with @gmail.com"
+            />
+          </div>
+          <div class="gender-details">
+            <label>Gender</label>
+            <br /><br />
+            <label for="dot-1" class="gender">Male</label>
+            <input type="radio" name="gender" id="dot-1" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="dot-2" class="gender">Female</label>
+            <input type="radio" name="gender" id="dot-2" />
+          </div>
+          <div>
+            <label for="showallplayers" class="show">All Players</label>
+            <textarea
+              id="showallplayers"
+              cols="45"
+              rows="10"
+              disabled
+            ></textarea>
+            <br />
+          </div>
+          <div>
+            <label for="showpercentage" class="percentage">Percentage</label>
+            <textarea id="showpercentage" disabled></textarea> <br />
+          </div>
+          <br />
+          <div class="progress">
+            <div class="progress__fill"></div>
+            <span class="progress__text">0%</span>
+          </div>
+          <div>
+            <button
+              id="register"
+              type="submit"
+              name="register"
+              onclick="Register()"
+            >
+              Register
+            </button>
+            <button
+              id="playarea"
+              type="submit"
+              name="Start"
+              onclick="PlayGame(); enablePlayArea()"
+              disabled
+            >
+              <a href="#area"> Start</a>
+            </button>
+            <button
+              id="end"
+              type="submit"
+              name="End"
+              onclick="findPercentageScore();formEnable()"
+              disabled
+            >
+              End
+            </button>
+            <button
+              id="score"
+              type="submit"
+              name="Score"
+              onclick="findPercentageScore()"
+              disabled
+            >
+              Score
+            </button>
+            <br /><br />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="Numbers">
+      <h1 class="play">Play Area</h1>
+      <div class="equation">
+        <h1 id="num1">...</h1>
+        <h1>
+          *<input
+            type="hidden"
+            name="operator"
+            id="multiply"
+            onclick="Operator('*')"
+            disabled
+          />
+        </h1>
+        <span id="area"></span>
+        <h1 id="num2">...</h1>
+        <h1>=</h1>
+        &nbsp;<input
+          type="text"
+          name="check"
+          id="user"
+          size="5"
+          maxlength="5"
+          disabled
+        /><br /><br />
+        <h2 id="check">...</h2>
+        <button id="accept" onclick="CheckAnswer()" disabled>Accept</button>
+        <button id="next" onclick="clearInput(); PlayGame()" disabled>
+          Next
+        </button>
+      </div>
+    </div>
+    <footer>
+      <p>Copyright &copy;<big>X</big>Multiply4kids, November 15, 2021</p>
+    </footer>
+  </body>
+</html>
